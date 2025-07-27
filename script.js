@@ -4,15 +4,19 @@ class Tarefa {
         this.descricao = descricao;
     }
     criar(tarefa){
+      const card = document.createElement("div");
+      card.classList.add("card");
+      document.body.appendChild(card);
+
       const paragrafo=document.createElement("p");
-      paragrafo.innerText = `Título: ${this.titulo} - Descrição: ${this.descricao}`;
-      document.body.appendChild(paragrafo);
+      paragrafo.innerText = `${this.titulo} \n ${this.descricao}`
+      card.appendChild(paragrafo);
+
       const excluir=document.createElement("button");
-      excluir.innerText = "excluir";
-      document.body.appendChild(excluir);
+      excluir.innerText = "Excluir";
+      card.appendChild(excluir);
       excluir.onclick = () => {
-        paragrafo.remove();
-        excluir.remove();
+        card.remove();
         this.excluir(tarefa);
       };
     }
@@ -30,10 +34,25 @@ function adicionarTarefa() {
    tarefasArray.push(tarefa);
    localStorage.setItem('tarefa', JSON.stringify(tarefasArray));
 }
-function limpartudo(){
+function limparTudo(){
     localStorage.clear();
     location.reload();
 }
+
+const barraPesquisa = document.getElementById("input_pesquisa")
+barraPesquisa.addEventListener("input", (event) => {
+   const pesquisa = document.getElementById("input_pesquisa").value;
+   const cards = document.getElementsByClassName('card');
+   for (let i = 0; i < cards.length; i++) {
+        const paragrafo = cards[i].querySelector('p').textContent;
+         if (paragrafo.includes(pesquisa)) {
+            cards[i].style.display = 'inline';
+        } else {
+            cards[i].style.display = 'none';
+        }
+    }
+ })
+
 
 let tarefasJSON = []
 let tarefasArray = []
