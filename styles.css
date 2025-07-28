@@ -1,0 +1,42 @@
+.card{
+    background-color: rgb(238, 238, 213);
+    border: 1px solid #020202;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 15px;
+    padding-top: 0px;
+    text-align: center;
+}
+form{
+    background-color: rgb(238, 238, 213);
+    border: 1px solid #020202;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 15px;
+}
+body{
+    background-color: rgb(187, 187, 187);
+}
+input{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 4px;
+}
+button{
+    margin: 3px;
+    padding: 3px;
+    border-radius: 4px;
+}
+#container{
+    display: flex;
+}
+#divInputs{
+    background-color: rgb(238, 238, 213);
+    border: 1px solid #020202;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 15px;
+}
+p{
+    font-size: large;
+}

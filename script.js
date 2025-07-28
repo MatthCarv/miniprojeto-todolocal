@@ -4,12 +4,13 @@ class Tarefa {
         this.descricao = descricao;
     }
     criar(tarefa){
+      const container = document.getElementById("container");
       const card = document.createElement("div");
       card.classList.add("card");
-      document.body.appendChild(card);
+      container.appendChild(card);
 
       const paragrafo=document.createElement("p");
-      paragrafo.innerText = `${this.titulo} \n ${this.descricao}`
+      paragrafo.innerHTML = "<b>"+this.titulo+"</b> <br/> <br/> <small>"+this.descricao;+"</small>"
       card.appendChild(paragrafo);
 
       const excluir=document.createElement("button");
@@ -27,19 +28,14 @@ class Tarefa {
 }
 
 function adicionarTarefa() {
-   const titulo= document.getElementById("input_titulo").value;
-   const descricao = document.getElementById("input_descricao").value;
-   const tarefa = new Tarefa(titulo, descricao);
-   tarefa.criar(tarefa); 
-   tarefasArray.push(tarefa);
-   localStorage.setItem('tarefa', JSON.stringify(tarefasArray));
+
 }
 function limparTudo(){
     localStorage.clear();
     location.reload();
 }
 
-const barraPesquisa = document.getElementById("input_pesquisa")
+const barraPesquisa = document.getElementById("input_pesquisa");
 barraPesquisa.addEventListener("input", (event) => {
    const pesquisa = document.getElementById("input_pesquisa").value;
    const cards = document.getElementsByClassName('card');
@@ -53,9 +49,19 @@ barraPesquisa.addEventListener("input", (event) => {
     }
  })
 
+const form = document.getElementById("formTarefa");
+form.addEventListener("submit", () =>{
+   const titulo= document.getElementById("input_titulo").value;
+   const descricao = document.getElementById("input_descricao").value;
+   const tarefa = new Tarefa(titulo, descricao);
+   tarefa.criar(tarefa); 
+   tarefasArray.push(tarefa);
+   localStorage.setItem('tarefa', JSON.stringify(tarefasArray));
+})
 
-let tarefasJSON = []
-let tarefasArray = []
+
+let tarefasJSON = [];
+let tarefasArray = [];
 if (localStorage.getItem('tarefa') !== null){
    tarefasJSON = JSON.parse(localStorage.getItem('tarefa'));
    tarefasJSON.forEach((element) => {

@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>ToDo Local</title>
 </head>
 <body>
-    <label>Titulo</label>
-    <input id="input_titulo">
-    <label>Descrição</label>
-    <input id="input_descricao">
-    <button onclick="adicionarTarefa()">Adicionar</button>
-    <button onclick="limparTudo()">limpar tudo</button>
+    <h1>Lista de tarefas</h1>
+    <div id="divInputs">
+    <form id="formTarefa">
+        <label>Titulo</label>
+        <input id="input_titulo" required>
+        <label>Descrição</label>
+        <input id="input_descricao" required>
+        <button type="submit">Adicionar</button>   
+    </form>
     <label>Pesquisar</label>
     <input id="input_pesquisa">
+    <button onclick="limparTudo()">Excluir todas tarefas</button>
+    </div>
+
+    <div id="container"></div>
     <script src="script.js"></script>
 </body>
 </html>
